@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductsController;
 
 Route::get('/', function () {
     return view('index');
@@ -159,3 +160,40 @@ Route::get('/lab1', function () {
     ];
     return view('lab1', compact('data', 'services', 'tasks', 'portofolios', 'users', 'blogs', 'contacts'));
 });
+
+Route::get('/tren-lop/{id}', function (string $id) {
+    $info = [
+        [
+            'id' => 1,
+            'name' => 'Nguyen Van A',
+            'age' => 20,
+        ],
+        [
+            'id' => 2,
+            'name' => 'Nguyen Van B',
+            'age' => 21,
+        ],
+        [
+            'id' => 3,
+            'name' => 'Nguyen Van C',
+            'age' => 22,
+        ],
+        [
+            'id' => 4,
+            'name' => 'Nguyen Van D',
+            'age' => 23,
+        ],
+        [
+            'id' => 5,
+            'name' => 'Nguyen Van E',
+            'age' => 24,
+        ],
+    ];
+    return view('tren_lop', compact('info', 'id'));
+});
+
+// Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
+// Route::get('/products/create', [ProductsController::class, 'create']);
+// Route::post('/products', [ProductsController::class, 'store']);
+
+Route::resource('products', ProductsController::class);
